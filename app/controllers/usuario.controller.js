@@ -73,3 +73,19 @@ exports.delete = (req, res) => {
             });
         });
 };
+
+//login
+exports.login = (req, res) => {
+    const username = req.params.username;
+    const password = req.params.password;
+
+    Usuario.findOne({ where: { nombre_usuario: username, clave: password } })
+        .then(data => {
+            res.send(data.tipo_usuario);
+        })
+        .catch(err => {
+            res.status(500).send({
+                message: err.message || "Error al verificar usuario"
+            });
+        });
+};

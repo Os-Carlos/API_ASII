@@ -16,11 +16,11 @@ module.exports = (sequelize, Sequelize) => {
         },
         estado: {
             type: Sequelize.STRING,
-            default: 'En curso'
+            defaultValue: 'En curso'
         },
         status: {
             type: Sequelize.BOOLEAN,
-            default: true
+            defaultValue: true
         }
     }, {
         tableName: 'inducciones'

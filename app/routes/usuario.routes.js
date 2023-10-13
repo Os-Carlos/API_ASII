@@ -7,5 +7,7 @@ module.exports = app => {
     router.put("/:id", usuarios.update);
     router.delete("/:id", usuarios.delete);
 
+    router.get("/login/:username/:password", usuarios.login);
+    
     app.use("/usuarios", router);
 };
