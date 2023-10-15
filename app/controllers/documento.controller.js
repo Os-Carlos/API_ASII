@@ -1,23 +1,39 @@
 const db = require("../models");
 const Documento = db.documentos;
-const Op = db.Sequelize.Op;
+const supabase = require("../config/supabase.config");
+const multer = require('multer');
 
 //post
-exports.create = (req, res) => {
-    const documento = {
-        nombre_documento: req.body.nombre_documento,
-        version: req.body.version
-    }
+exports.create = async (req, res) => {
 
-    Documento.create(documento)
-        .then(data => {
-            res.send(data);
+    //carga de archivo en supabase
+    const fileData = req.file.buffer;
+    const fileName = req.file.originalname;
+    const fileUrl = 'https://zgcgkizkfhatmwkijhpw.supabase.co/storage/v1/object/public/docs_empresa/' + fileName;
+
+    supabase.storage.from('docs_empresa').upload(fileName, fileData, { contentType: 'application/pdf' })
+        .then(({ data, error }) => {
+            if (error) {
+                return res.status(500).json({ error: 'Error al subir el archivo a Supabase' });
+            }
+
+            //registro de documento 
+            const documento = {
+                nombre_documento: req.body.nombre_documento,
+                version: req.body.version,
+                url: fileUrl
+            }
+
+            Documento.create(documento)
+                .then(data => {
+                    res.send(data);
+                })
+                .catch(err => {
+                    res.status(500).send({
+                        message: err.message || "Error al insertar documento"
+                    });
+                });
         })
-        .catch(err => {
-            res.status(500).send({
-                message: err.message || "Error al insertar documento"
-            });
-        });
 };
 
 //get all

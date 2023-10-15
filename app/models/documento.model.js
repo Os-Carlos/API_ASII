@@ -11,6 +11,9 @@ module.exports = (sequelize, Sequelize) => {
         version: {
             type: Sequelize.STRING
         },
+        url: {
+            type: Sequelize.STRING
+        },
         status: {
             type: Sequelize.BOOLEAN,
             defaultValue: true
