@@ -7,6 +7,7 @@ exports.create = (req, res) => {
     const induccion = {
         codigo_colaborador: req.body.codigo_colaborador,
         descripcion: req.body.descripcion,
+        estado: req.body.estado,
         fecha_inicio: req.body.fecha_inicio
     }
 

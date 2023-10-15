@@ -15,8 +15,7 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.DATEONLY
         },
         estado: {
-            type: Sequelize.STRING,
-            defaultValue: 'En curso'
+            type: Sequelize.STRING
         },
         status: {
             type: Sequelize.BOOLEAN,
