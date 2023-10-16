@@ -7,7 +7,11 @@ const app = express();
 const PORT = process.env.PORT || 4000;
 
 var corsOptions = {
-    origin: "0.0.0.0"
+    origin: [
+        'http://localhost:4000',
+        'https://form-supabase-files.glitch.me',
+        'https://apex.oracle.com/pls/apex/f?p=156956:18:9478414162097',
+    ],
 };
 
 app.use(cors(corsOptions));
