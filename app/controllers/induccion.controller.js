@@ -11,6 +11,11 @@ exports.create = (req, res) => {
         fecha_inicio: req.body.fecha_inicio
     }
 
+    // Calcula la fecha_fin sumando 15 días a la fecha_inicio
+    const fechaInicio = new Date(induccion.fecha_inicio);
+    fechaInicio.setDate(fechaInicio.getDate() + 15);
+    induccion.fecha_fin = fechaInicio;
+
     Induccion.create(induccion)
         .then(data => {
             res.send(data);

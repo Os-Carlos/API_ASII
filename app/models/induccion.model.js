@@ -14,6 +14,9 @@ module.exports = (sequelize, Sequelize) => {
         fecha_inicio: {
             type: Sequelize.DATEONLY
         },
+        fecha_fin: {
+            type: Sequelize.DATEONLY
+        },
         estado: {
             type: Sequelize.STRING
         },
