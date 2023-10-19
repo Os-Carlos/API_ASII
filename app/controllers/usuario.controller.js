@@ -25,7 +25,7 @@ exports.create = (req, res) => {
 
 //get all
 exports.findAll = (req, res) => {
-    Usuario.findAll()
+    Usuario.findAll({ where: { status: true } })
         .then(data => {
             res.send(data);
         })
