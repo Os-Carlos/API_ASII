@@ -4,8 +4,8 @@ const { Induccion, Usuario } = require('../models'); // Importa tus modelos
 function programarTareas() {
     // Define una regla para que la función se ejecute diariamente a una hora específica (ajusta según tus necesidades)
     const rule = new schedule.RecurrenceRule();
-    rule.hour = 0; // Hora (0-23)
-    rule.minute = 0; // Minuto (0-59)
+    rule.hour = 12; // Hora (0-23)
+    rule.minute = 30; // Minuto (0-59)
 
     // Programa la función para que se ejecute diariamente
     const job = schedule.scheduleJob(rule, async function () {
