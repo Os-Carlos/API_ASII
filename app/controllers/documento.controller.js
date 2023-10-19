@@ -49,6 +49,19 @@ exports.findAll = (req, res) => {
         });
 };
 
+//get actives only
+exports.findActives = (req, res) => {
+    Documento.findAll({ where: { status: true } })
+        .then(data => {
+            res.send(data);
+        })
+        .catch(err => {
+            res.status(500).send({
+                message: err.message || "Error al obtener documentos"
+            });
+        });
+};
+
 //put
 exports.update = (req, res) => {
     const id = req.params.id;

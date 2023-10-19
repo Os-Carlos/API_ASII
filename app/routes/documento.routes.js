@@ -6,6 +6,7 @@ module.exports = app => {
 
     router.post("/", upload.single('file'), documentos.create);
     router.get("/", documentos.findAll);
+    router.get("/actives", documentos.findActives);
     router.put("/:id", documentos.update);
     router.delete("/:id", documentos.delete);
 
