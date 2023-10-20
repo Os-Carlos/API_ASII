@@ -2,7 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const db = require("./app/models");
-const programarTareas = require('./app/utils/scheduler');
+
 
 const app = express();
 const PORT = process.env.PORT || 4000;
@@ -40,7 +40,7 @@ require("./app/routes/induccion.routes")(app);
 require("./app/routes/puesto.routes")(app);
 require("./app/routes/usuario.routes")(app);
 
-programarTareas();
+
 
 app.listen(PORT, () => {
     console.log(`------Servidor corriendo en puerto: ${PORT}.`);

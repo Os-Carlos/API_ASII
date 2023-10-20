@@ -25,7 +25,7 @@ exports.create = (req, res) => {
 
 //get all
 exports.findAll = (req, res) => {
-    Usuario.findAll({ where: { status: true } })
+    Usuario.findAll()
         .then(data => {
             res.send(data);
         })
@@ -35,6 +35,7 @@ exports.findAll = (req, res) => {
             });
         });
 };
+
 
 //put
 exports.update = (req, res) => {
