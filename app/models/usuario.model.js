@@ -6,8 +6,7 @@ module.exports = (sequelize, Sequelize) => {
             autoIncrement: true
         },
         codigo_colaborador: {
-            type: Sequelize.STRING,
-            primaryKey: true
+            type: Sequelize.STRING
         },
         nombre_usuario: {
             type: Sequelize.STRING,
@@ -29,7 +28,7 @@ module.exports = (sequelize, Sequelize) => {
         }
     }, {
         tableName: 'usuarios'
-    })
+    });
 
     return Usuario;
 };

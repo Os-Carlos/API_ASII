@@ -4,6 +4,7 @@ module.exports = app => {
 
     router.post("/", inducciones.create);
     router.get("/", inducciones.findAll);
+    router.get("/:codigo", inducciones.findByCode);
     router.put("/:id", inducciones.update);
     router.delete("/:id", inducciones.delete);
 

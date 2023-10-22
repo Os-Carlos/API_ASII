@@ -2,6 +2,7 @@ const db = require("../models");
 const Documento = db.documentos;
 const supabase = require("../config/supabase.config");
 const multer = require('multer');
+const Op = db.Sequelize.Op;
 
 //post
 exports.create = async (req, res) => {

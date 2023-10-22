@@ -1,3 +1,4 @@
+const { where } = require("sequelize");
 const db = require("../models");
 const Induccion = db.inducciones;
 const Op = db.Sequelize.Op;
@@ -13,7 +14,7 @@ exports.create = (req, res) => {
 
     // Calcula la fecha_fin sumando 15 días a la fecha_inicio
     const fechaInicio = new Date(induccion.fecha_inicio);
-    fechaInicio.setDate(fechaInicio.getDate() + 1);
+    fechaInicio.setDate(fechaInicio.getDate() + 15);
     induccion.fecha_fin = fechaInicio;
 
     Induccion.create(induccion)
@@ -30,6 +31,20 @@ exports.create = (req, res) => {
 //get all
 exports.findAll = (req, res) => {
     Induccion.findAll()
+        .then(data => {
+            res.send(data);
+        })
+        .catch(err => {
+            res.status(500).send({
+                message: err.message || "Error al obtener inducciones"
+            });
+        });
+};
+
+//get all by user code
+exports.findByCode = (req, res) => {
+    const codigo = req.params.codigo;
+    Induccion.findAll({ where: { codigo_colaborador: codigo } })
         .then(data => {
             res.send(data);
         })
